@@ -1,0 +1,60 @@
+<div id="generation-result" class="d-flex flex-column pt-4 pl-2" style="visibility: hidden; font-size: 14px;">
+  <div><b>Absolute</b></div>
+  <div id="analytic-expected-value">Mean: </div>
+  <div id="analytic-variance-value">Variance: </div>
+  <div id="analytic-deviation-value" class="mb-4">Deviation: </div>
+
+  <div><b>Neumann</b></div>
+  <div id="neumann-expected-value">Mean: </div>
+  <div id="neumann-variance-value">Variance: </div>
+  <div id="neumann-deviation-value" class="mb-4">Deviation: </div>
+
+  <div><b>Metropolis</b></div>
+  <div id="metropolis-expected-value">Mean: </div>
+  <div id="metropolis-variance-value">Variance: </div>
+  <div id="metropolis-deviation-value" class="mb-4">Deviation: </div>
+
+  <div><b>Inverse</b></div>
+  <div id="inverse-expected-value">Mean: </div>
+  <div id="inverse-variance-value">Variance: </div>
+  <div id="inverse-deviation-value" class="mb-4">Deviation: </div>
+</div>
+
+<script>
+    function fillExpectedValues() {
+        if (!window.calculationResult) return;
+        document.getElementById('generation-result').style.visibility = 'visible';
+
+        const {
+            pdfMeanValue,
+            pdfVarianceValue,
+            pdfDeviationValue,
+            neumannMethodExpectedValue,
+            neumannMethodVariance,
+            neumannMethodDeviation,
+            metropolisMethodExpectedValue,
+            metropolisMethodVariance,
+            metropolisMethodDeviation,
+            inverseMethodExpectedValue,
+            inverseMethodVariance,
+            inverseMethodDeviation,
+        } = window.calculationResult;
+
+        document.getElementById('analytic-expected-value').textContent += pdfMeanValue;
+        document.getElementById('analytic-variance-value').textContent += pdfVarianceValue;
+        document.getElementById('analytic-deviation-value').textContent += pdfDeviationValue;
+
+        document.getElementById('neumann-expected-value').textContent += neumannMethodExpectedValue;
+        document.getElementById('neumann-variance-value').textContent += neumannMethodVariance;
+        document.getElementById('neumann-deviation-value').textContent += neumannMethodDeviation;
+
+        document.getElementById('metropolis-expected-value').textContent += metropolisMethodExpectedValue;
+        document.getElementById('metropolis-variance-value').textContent += metropolisMethodVariance;
+        document.getElementById('metropolis-deviation-value').textContent += metropolisMethodDeviation;
+
+        document.getElementById('inverse-expected-value').textContent += inverseMethodExpectedValue;
+        document.getElementById('inverse-variance-value').textContent += inverseMethodVariance;
+        document.getElementById('inverse-deviation-value').textContent += inverseMethodDeviation;
+    }
+    fillExpectedValues();
+</script>
